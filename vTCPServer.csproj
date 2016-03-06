@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{DFFED8B5-0B83-4F97-A678-EFB3993505C4}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ComTest</RootNamespace>
+    <AssemblyName>vTCPServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <StartupObject>vTCPServer.Program</StartupObject>
+    <ApplicationIcon>Resource\ico.ico</ApplicationIcon>
+    <NoWin32Manifest>False</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PcapDotNet.Base">
+      <HintPath>..\PcapDotNet.Binaries.1.0.2.76195.x86\PcapDotNet.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="PcapDotNet.Core">
+      <HintPath>..\PcapDotNet.Binaries.1.0.2.76195.x86\PcapDotNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PcapDotNet.Core.Extensions">
+      <HintPath>..\PcapDotNet.Binaries.1.0.2.76195.x86\PcapDotNet.Core.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PcapDotNet.Packets">
+      <HintPath>..\PcapDotNet.Binaries.1.0.2.76195.x86\PcapDotNet.Packets.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\TCPUtils.cs" />
+    <Compile Include="Forms\CaptureForm.cs" />
+    <Compile Include="Forms\CaptureForm.Designer.cs">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CommForm.cs" />
+    <Compile Include="Forms\CommForm.Designer.cs">
+      <DependentUpon>CommForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CRC.cs" />
+    <Compile Include="Common\HexString.cs" />
+    <Compile Include="Common\RuleHelper.cs" />
+    <Compile Include="Forms\RuleForm.cs" />
+    <Compile Include="Forms\RuleForm.Designer.cs">
+      <DependentUpon>RuleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resource\Add.png" />
+    <None Include="Resource\Delete.png" />
+    <None Include="Resource\Down.png" />
+    <None Include="Resource\dribbble.png" />
+    <None Include="Resource\Export.png" />
+    <None Include="Resource\Import.png" />
+    <None Include="Resource\manage.png" />
+    <None Include="Resource\save.png" />
+    <None Include="Resource\shuffle.png" />
+    <None Include="Resource\Socket.PNG" />
+    <None Include="Resource\top.png" />
+    <None Include="Resource\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common" />
+    <Folder Include="Forms" />
+    <Folder Include="Resource" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\CaptureForm.resx">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CommForm.resx">
+      <DependentUpon>CommForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RuleForm.resx">
+      <DependentUpon>RuleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
