@@ -41,6 +41,7 @@ namespace vTCPServer.Forms
 			this.textBoxName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.checkBoxContinueNext = new System.Windows.Forms.CheckBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.textBoxDelay = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@ namespace vTCPServer.Forms
 			this.toolStripButtonDown = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButtonApply = new System.Windows.Forms.ToolStripButton();
-			this.checkBoxContinueNext = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -78,7 +78,7 @@ namespace vTCPServer.Forms
 			this.listView1.MultiSelect = false;
 			this.listView1.Name = "listView1";
 			this.listView1.Scrollable = false;
-			this.listView1.Size = new System.Drawing.Size(183, 347);
+			this.listView1.Size = new System.Drawing.Size(183, 432);
 			this.listView1.TabIndex = 0;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
@@ -86,7 +86,7 @@ namespace vTCPServer.Forms
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(14, 57);
+			this.label1.Location = new System.Drawing.Point(14, 52);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(71, 23);
 			this.label1.TabIndex = 1;
@@ -97,7 +97,7 @@ namespace vTCPServer.Forms
 			// 
 			this.textBoxName.Location = new System.Drawing.Point(54, 20);
 			this.textBoxName.Name = "textBoxName";
-			this.textBoxName.Size = new System.Drawing.Size(304, 21);
+			this.textBoxName.Size = new System.Drawing.Size(325, 21);
 			this.textBoxName.TabIndex = 2;
 			// 
 			// label2
@@ -128,13 +128,22 @@ namespace vTCPServer.Forms
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Location = new System.Drawing.Point(215, 29);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(373, 354);
+			this.groupBox1.Size = new System.Drawing.Size(493, 439);
 			this.groupBox1.TabIndex = 4;
 			this.groupBox1.TabStop = false;
 			// 
+			// checkBoxContinueNext
+			// 
+			this.checkBoxContinueNext.Location = new System.Drawing.Point(278, 52);
+			this.checkBoxContinueNext.Name = "checkBoxContinueNext";
+			this.checkBoxContinueNext.Size = new System.Drawing.Size(103, 24);
+			this.checkBoxContinueNext.TabIndex = 15;
+			this.checkBoxContinueNext.Text = "ContinueNext";
+			this.checkBoxContinueNext.UseVisualStyleBackColor = true;
+			// 
 			// label5
 			// 
-			this.label5.Location = new System.Drawing.Point(251, 213);
+			this.label5.Location = new System.Drawing.Point(371, 256);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(43, 23);
 			this.label5.TabIndex = 14;
@@ -143,7 +152,7 @@ namespace vTCPServer.Forms
 			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(339, 210);
+			this.label4.Location = new System.Drawing.Point(459, 253);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(19, 23);
 			this.label4.TabIndex = 13;
@@ -152,7 +161,7 @@ namespace vTCPServer.Forms
 			// 
 			// textBoxDelay
 			// 
-			this.textBoxDelay.Location = new System.Drawing.Point(295, 213);
+			this.textBoxDelay.Location = new System.Drawing.Point(415, 256);
 			this.textBoxDelay.Name = "textBoxDelay";
 			this.textBoxDelay.Size = new System.Drawing.Size(40, 21);
 			this.textBoxDelay.TabIndex = 12;
@@ -160,7 +169,7 @@ namespace vTCPServer.Forms
 			// 
 			// checkBoxAddCRC
 			// 
-			this.checkBoxAddCRC.Location = new System.Drawing.Point(104, 213);
+			this.checkBoxAddCRC.Location = new System.Drawing.Point(104, 255);
 			this.checkBoxAddCRC.Name = "checkBoxAddCRC";
 			this.checkBoxAddCRC.Size = new System.Drawing.Size(72, 24);
 			this.checkBoxAddCRC.TabIndex = 11;
@@ -169,15 +178,15 @@ namespace vTCPServer.Forms
 			// 
 			// textBoxRespData
 			// 
-			this.textBoxRespData.Location = new System.Drawing.Point(14, 237);
+			this.textBoxRespData.Location = new System.Drawing.Point(14, 284);
 			this.textBoxRespData.Multiline = true;
 			this.textBoxRespData.Name = "textBoxRespData";
-			this.textBoxRespData.Size = new System.Drawing.Size(344, 102);
+			this.textBoxRespData.Size = new System.Drawing.Size(464, 144);
 			this.textBoxRespData.TabIndex = 10;
 			// 
 			// label3
 			// 
-			this.label3.Location = new System.Drawing.Point(14, 213);
+			this.label3.Location = new System.Drawing.Point(14, 255);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(71, 23);
 			this.label3.TabIndex = 9;
@@ -186,7 +195,7 @@ namespace vTCPServer.Forms
 			// 
 			// checkBoxHEX
 			// 
-			this.checkBoxHEX.Location = new System.Drawing.Point(298, 46);
+			this.checkBoxHEX.Location = new System.Drawing.Point(405, 51);
 			this.checkBoxHEX.Name = "checkBoxHEX";
 			this.checkBoxHEX.Size = new System.Drawing.Size(45, 24);
 			this.checkBoxHEX.TabIndex = 8;
@@ -195,7 +204,7 @@ namespace vTCPServer.Forms
 			// 
 			// checkBoxMatchOnce
 			// 
-			this.checkBoxMatchOnce.Location = new System.Drawing.Point(198, 46);
+			this.checkBoxMatchOnce.Location = new System.Drawing.Point(191, 52);
 			this.checkBoxMatchOnce.Name = "checkBoxMatchOnce";
 			this.checkBoxMatchOnce.Size = new System.Drawing.Size(81, 24);
 			this.checkBoxMatchOnce.TabIndex = 7;
@@ -204,7 +213,7 @@ namespace vTCPServer.Forms
 			// 
 			// checkBoxMatchPart
 			// 
-			this.checkBoxMatchPart.Location = new System.Drawing.Point(104, 67);
+			this.checkBoxMatchPart.Location = new System.Drawing.Point(104, 52);
 			this.checkBoxMatchPart.Name = "checkBoxMatchPart";
 			this.checkBoxMatchPart.Size = new System.Drawing.Size(81, 24);
 			this.checkBoxMatchPart.TabIndex = 6;
@@ -213,17 +222,17 @@ namespace vTCPServer.Forms
 			// 
 			// textBoxRecvData
 			// 
-			this.textBoxRecvData.Location = new System.Drawing.Point(14, 92);
+			this.textBoxRecvData.Location = new System.Drawing.Point(14, 78);
 			this.textBoxRecvData.Multiline = true;
 			this.textBoxRecvData.Name = "textBoxRecvData";
-			this.textBoxRecvData.Size = new System.Drawing.Size(344, 113);
+			this.textBoxRecvData.Size = new System.Drawing.Size(464, 171);
 			this.textBoxRecvData.TabIndex = 5;
 			// 
 			// checkBoxEnable
 			// 
 			this.checkBoxEnable.Checked = true;
 			this.checkBoxEnable.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxEnable.Location = new System.Drawing.Point(104, 46);
+			this.checkBoxEnable.Location = new System.Drawing.Point(405, 20);
 			this.checkBoxEnable.Name = "checkBoxEnable";
 			this.checkBoxEnable.Size = new System.Drawing.Size(60, 24);
 			this.checkBoxEnable.TabIndex = 4;
@@ -245,7 +254,7 @@ namespace vTCPServer.Forms
 									this.toolStripButtonApply});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(600, 25);
+			this.toolStrip1.Size = new System.Drawing.Size(720, 25);
 			this.toolStrip1.TabIndex = 5;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
@@ -327,20 +336,11 @@ namespace vTCPServer.Forms
 			this.toolStripButtonApply.Text = "Apply";
 			this.toolStripButtonApply.Click += new System.EventHandler(this.ToolStripButtonSaveClick);
 			// 
-			// checkBoxContinueNext
-			// 
-			this.checkBoxContinueNext.Location = new System.Drawing.Point(198, 67);
-			this.checkBoxContinueNext.Name = "checkBoxContinueNext";
-			this.checkBoxContinueNext.Size = new System.Drawing.Size(103, 24);
-			this.checkBoxContinueNext.TabIndex = 15;
-			this.checkBoxContinueNext.Text = "ContinueNext";
-			this.checkBoxContinueNext.UseVisualStyleBackColor = true;
-			// 
 			// RuleForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(600, 400);
+			this.ClientSize = new System.Drawing.Size(720, 480);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.listView1);

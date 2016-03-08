@@ -37,7 +37,6 @@ namespace vTCPServer.Forms
 		{
 			this.textBoxPort = new System.Windows.Forms.TextBox();
 			this.buttonStartCapture = new System.Windows.Forms.Button();
-			this.textBoxLogdata = new System.Windows.Forms.TextBox();
 			this.checkBoxShowdata = new System.Windows.Forms.CheckBox();
 			this.checkBoxShowHex = new System.Windows.Forms.CheckBox();
 			this.buttonClear = new System.Windows.Forms.Button();
@@ -46,6 +45,13 @@ namespace vTCPServer.Forms
 			this.checkBoxPort = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.comboBoxDevices = new System.Windows.Forms.ComboBox();
+			this.listView1 = new System.Windows.Forms.ListView();
+			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -68,21 +74,11 @@ namespace vTCPServer.Forms
 			this.buttonStartCapture.UseVisualStyleBackColor = true;
 			this.buttonStartCapture.Click += new System.EventHandler(this.ButtonStartCaptureClick);
 			// 
-			// textBoxLogdata
-			// 
-			this.textBoxLogdata.Location = new System.Drawing.Point(13, 83);
-			this.textBoxLogdata.Multiline = true;
-			this.textBoxLogdata.Name = "textBoxLogdata";
-			this.textBoxLogdata.ReadOnly = true;
-			this.textBoxLogdata.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBoxLogdata.Size = new System.Drawing.Size(575, 305);
-			this.textBoxLogdata.TabIndex = 1;
-			// 
 			// checkBoxShowdata
 			// 
 			this.checkBoxShowdata.Checked = true;
 			this.checkBoxShowdata.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxShowdata.Location = new System.Drawing.Point(385, 42);
+			this.checkBoxShowdata.Location = new System.Drawing.Point(505, 42);
 			this.checkBoxShowdata.Name = "checkBoxShowdata";
 			this.checkBoxShowdata.Size = new System.Drawing.Size(49, 24);
 			this.checkBoxShowdata.TabIndex = 3;
@@ -94,7 +90,7 @@ namespace vTCPServer.Forms
 			// 
 			this.checkBoxShowHex.Checked = true;
 			this.checkBoxShowHex.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxShowHex.Location = new System.Drawing.Point(440, 42);
+			this.checkBoxShowHex.Location = new System.Drawing.Point(560, 42);
 			this.checkBoxShowHex.Name = "checkBoxShowHex";
 			this.checkBoxShowHex.Size = new System.Drawing.Size(49, 24);
 			this.checkBoxShowHex.TabIndex = 2;
@@ -104,7 +100,7 @@ namespace vTCPServer.Forms
 			// 
 			// buttonClear
 			// 
-			this.buttonClear.Location = new System.Drawing.Point(493, 42);
+			this.buttonClear.Location = new System.Drawing.Point(613, 42);
 			this.buttonClear.Name = "buttonClear";
 			this.buttonClear.Size = new System.Drawing.Size(68, 23);
 			this.buttonClear.TabIndex = 10;
@@ -153,7 +149,7 @@ namespace vTCPServer.Forms
 			this.groupBox1.Controls.Add(this.textBoxPort);
 			this.groupBox1.Location = new System.Drawing.Point(12, 3);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(576, 74);
+			this.groupBox1.Size = new System.Drawing.Size(696, 74);
 			this.groupBox1.TabIndex = 18;
 			this.groupBox1.TabStop = false;
 			// 
@@ -161,18 +157,69 @@ namespace vTCPServer.Forms
 			// 
 			this.comboBoxDevices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxDevices.FormattingEnabled = true;
-			this.comboBoxDevices.Location = new System.Drawing.Point(7, 13);
+			this.comboBoxDevices.Location = new System.Drawing.Point(6, 17);
 			this.comboBoxDevices.Name = "comboBoxDevices";
-			this.comboBoxDevices.Size = new System.Drawing.Size(554, 20);
+			this.comboBoxDevices.Size = new System.Drawing.Size(675, 20);
 			this.comboBoxDevices.TabIndex = 18;
+			// 
+			// listView1
+			// 
+			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+									this.columnHeader1,
+									this.columnHeader2,
+									this.columnHeader3,
+									this.columnHeader4,
+									this.columnHeader5,
+									this.columnHeader6});
+			this.listView1.FullRowSelect = true;
+			this.listView1.GridLines = true;
+			this.listView1.HideSelection = false;
+			this.listView1.Location = new System.Drawing.Point(12, 83);
+			this.listView1.MultiSelect = false;
+			this.listView1.Name = "listView1";
+			this.listView1.Size = new System.Drawing.Size(696, 385);
+			this.listView1.TabIndex = 19;
+			this.listView1.TabStop = false;
+			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.listView1.View = System.Windows.Forms.View.Details;
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "#";
+			this.columnHeader1.Width = 30;
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "time";
+			this.columnHeader2.Width = 85;
+			// 
+			// columnHeader3
+			// 
+			this.columnHeader3.Text = "from";
+			this.columnHeader3.Width = 125;
+			// 
+			// columnHeader4
+			// 
+			this.columnHeader4.Text = "to";
+			this.columnHeader4.Width = 125;
+			// 
+			// columnHeader5
+			// 
+			this.columnHeader5.Text = "length";
+			this.columnHeader5.Width = 50;
+			// 
+			// columnHeader6
+			// 
+			this.columnHeader6.Text = "data";
+			this.columnHeader6.Width = 270;
 			// 
 			// CaptureForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(600, 400);
+			this.ClientSize = new System.Drawing.Size(720, 480);
+			this.Controls.Add(this.listView1);
 			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.textBoxLogdata);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "CaptureForm";
 			this.Text = "SocketForm";
@@ -180,8 +227,14 @@ namespace vTCPServer.Forms
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 		}
+		private System.Windows.Forms.ColumnHeader columnHeader6;
+		private System.Windows.Forms.ColumnHeader columnHeader5;
+		private System.Windows.Forms.ColumnHeader columnHeader4;
+		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.ListView listView1;
 		private System.Windows.Forms.ComboBox comboBoxDevices;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.CheckBox checkBoxPort;
@@ -191,7 +244,6 @@ namespace vTCPServer.Forms
 		private System.Windows.Forms.TextBox textBoxPort;
 		private System.Windows.Forms.CheckBox checkBoxShowdata;
 		private System.Windows.Forms.CheckBox checkBoxShowHex;
-		private System.Windows.Forms.TextBox textBoxLogdata;
 		private System.Windows.Forms.Button buttonStartCapture;
 		
 	}

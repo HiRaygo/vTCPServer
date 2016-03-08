@@ -34,7 +34,7 @@ namespace vTCPServer.Forms
 		
 		bool isCapturing;
 		
-		delegate void LogDataHandler(string str);
+		delegate void LogDataHandler(Packet packet);
 		LogDataHandler ld;
 		
         IList<LivePacketDevice> allDevices;
@@ -92,28 +92,40 @@ namespace vTCPServer.Forms
 		}
 	
 		/// <summary>
-		/// show the log in the textbox
+		/// show the log in the listview
 		/// </summary>
 		/// <param name="str"></param>
 		/// <param name="type"></param>
-		void LogData(string str)
+		void LogData(Packet packet)
 		{
 			if(!isLogData)
 				return;
 			
-			if(textBoxLogdata.InvokeRequired)
+			if(listView1.InvokeRequired)
 			{				
-				this.Invoke(ld, new object[]{str});
+				this.Invoke(ld, new object[]{packet});
 			}
 			else
 			{
-				textBoxLogdata.AppendText(str + "\n");
+				ListViewItem lvi = new ListViewItem();
+				lvi.Text = iii.ToString();
+				lvi.SubItems.Add(packet.Timestamp.ToString("hh:mm:ss.fff"));
+				lvi.SubItems.Add(packet.Ethernet.IpV4.Source.ToString() +":"+ packet.Ethernet.IpV4.Tcp.SourcePort.ToString());
+				lvi.SubItems.Add(packet.Ethernet.IpV4.Destination.ToString() +":"+ packet.Ethernet.IpV4.Tcp.DestinationPort.ToString());
+				lvi.SubItems.Add(packet.Ethernet.IpV4.Tcp.PayloadLength.ToString());
+				lvi.SubItems.Add(packet.Ethernet.IpV4.Tcp.Payload.ToHexadecimalString());
+				listView1.BeginUpdate();
+				listView1.Items.Add(lvi);
+				listView1.Items[iii].EnsureVisible();
+				listView1.EndUpdate();
+				iii++;
 			}
 		}
 		
 		void ButtonClearClick(object sender, EventArgs e)
 		{
-			this.textBoxLogdata.Clear();
+			this.listView1.Items.Clear();
+			iii = 0;
 		}
 		
 		void CheckBoxShowHexCheckedChanged(object sender, EventArgs e)
@@ -132,7 +144,7 @@ namespace vTCPServer.Forms
 			if(isCapturing)
 			{
 				capthread.Abort();
-				Thread.Sleep(2000);
+				Thread.Sleep(1000);
 	            if(!capthread.IsAlive)
 	            {
 	            	buttonStartCapture.Text = "Capture";
@@ -154,7 +166,7 @@ namespace vTCPServer.Forms
 	            capthread = new Thread(new ThreadStart(StartCapture));
 	            capthread.IsBackground = true;
 	            capthread.Start();
-	            Thread.Sleep(2000);
+	            Thread.Sleep(1000);
 	            if(isCapturing)
 	            	buttonStartCapture.Text = "Stop";
 			}
@@ -185,20 +197,7 @@ namespace vTCPServer.Forms
                             // Timeout elapsed
                             continue;
                         case PacketCommunicatorReceiveResult.Ok:
-                            LogData(packet.Timestamp.ToString("yyyy-MM-dd hh:mm:ss.fff"));
-                            string log = string.Format("{0}:{1} ---> {2}:{3}  [{4}]",
-							                packet.Ethernet.IpV4.Source, packet.Ethernet.IpV4.Tcp.SourcePort,
-							                packet.Ethernet.IpV4.Destination, packet.Ethernet.IpV4.Tcp.DestinationPort,
-							                packet.Ethernet.IpV4.Tcp.Payload.ToString());
-                            LogData(log);
-//                            if(isLogData && isShowHex)
-//                            {
-//                            	LogData(HexString.Bytes2HexString(packet.Buffer));
-//                            }
-//                            else if(isLogData)
-//                            {
-//                            	LogData(HexString.Bytes2AsciiString(packet.Buffer));
-//                            }                            
+                            LogData(packet);
                             break;
                         default:
                             throw new InvalidOperationException("The result " + result + " shoudl never be reached here");
