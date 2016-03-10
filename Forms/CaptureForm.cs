@@ -182,8 +182,7 @@ namespace vTCPServer.Forms
                 {
                     // Set the filter
                     communicator.SetFilter(filter);
-                }
-				
+                }				
 				isCapturing = true;
 				
                 // Retrieve the packets

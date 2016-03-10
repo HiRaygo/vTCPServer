@@ -36,9 +36,14 @@ namespace vTCPServer.Forms
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.comboBoxDevices = new System.Windows.Forms.ComboBox();
+			this.textBoxMac = new System.Windows.Forms.TextBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.textBoxTimeout = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.textBoxServerIP = new System.Windows.Forms.TextBox();
 			this.comboBoxTCP1 = new System.Windows.Forms.ComboBox();
 			this.textBoxServerPort = new System.Windows.Forms.TextBox();
-			this.comboBoxServerIP = new System.Windows.Forms.ComboBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.buttonStartServer = new System.Windows.Forms.Button();
@@ -51,13 +56,13 @@ namespace vTCPServer.Forms
 			this.textBoxInterval = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.checkBoxAutoClear = new System.Windows.Forms.CheckBox();
 			this.checkBoxLoopBack = new System.Windows.Forms.CheckBox();
 			this.checkBoxEnableRule = new System.Windows.Forms.CheckBox();
+			this.checkBoxAutoClear = new System.Windows.Forms.CheckBox();
 			this.checkBoxShowdata = new System.Windows.Forms.CheckBox();
 			this.checkBoxShowHex = new System.Windows.Forms.CheckBox();
 			this.checkBoxSendHex = new System.Windows.Forms.CheckBox();
-			this.button2 = new System.Windows.Forms.Button();
+			this.buttonSend = new System.Windows.Forms.Button();
 			this.buttonClear = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.comboBoxTCP2 = new System.Windows.Forms.ComboBox();
@@ -73,52 +78,99 @@ namespace vTCPServer.Forms
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.comboBoxDevices);
+			this.groupBox1.Controls.Add(this.textBoxMac);
+			this.groupBox1.Controls.Add(this.label11);
+			this.groupBox1.Controls.Add(this.textBoxTimeout);
+			this.groupBox1.Controls.Add(this.label5);
+			this.groupBox1.Controls.Add(this.textBoxServerIP);
 			this.groupBox1.Controls.Add(this.comboBoxTCP1);
 			this.groupBox1.Controls.Add(this.textBoxServerPort);
-			this.groupBox1.Controls.Add(this.comboBoxServerIP);
 			this.groupBox1.Controls.Add(this.label7);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.buttonStartServer);
 			this.groupBox1.Location = new System.Drawing.Point(13, 13);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(161, 130);
+			this.groupBox1.Size = new System.Drawing.Size(161, 231);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Server Config";
+			// 
+			// comboBoxDevices
+			// 
+			this.comboBoxDevices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxDevices.FormattingEnabled = true;
+			this.comboBoxDevices.Location = new System.Drawing.Point(10, 25);
+			this.comboBoxDevices.Name = "comboBoxDevices";
+			this.comboBoxDevices.Size = new System.Drawing.Size(139, 20);
+			this.comboBoxDevices.TabIndex = 23;
+			// 
+			// textBoxMac
+			// 
+			this.textBoxMac.Location = new System.Drawing.Point(45, 57);
+			this.textBoxMac.Name = "textBoxMac";
+			this.textBoxMac.Size = new System.Drawing.Size(104, 21);
+			this.textBoxMac.TabIndex = 21;
+			this.textBoxMac.Text = "AB:CD:EF:10";
+			// 
+			// label11
+			// 
+			this.label11.Location = new System.Drawing.Point(10, 56);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(34, 23);
+			this.label11.TabIndex = 20;
+			this.label11.Text = "Mac:";
+			this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// textBoxTimeout
+			// 
+			this.textBoxTimeout.Location = new System.Drawing.Point(100, 158);
+			this.textBoxTimeout.MaxLength = 6;
+			this.textBoxTimeout.Name = "textBoxTimeout";
+			this.textBoxTimeout.Size = new System.Drawing.Size(49, 21);
+			this.textBoxTimeout.TabIndex = 18;
+			this.textBoxTimeout.Text = "10";
+			// 
+			// label5
+			// 
+			this.label5.Location = new System.Drawing.Point(10, 159);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(80, 23);
+			this.label5.TabIndex = 17;
+			this.label5.Text = "Timeout(ms):";
+			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// textBoxServerIP
+			// 
+			this.textBoxServerIP.Location = new System.Drawing.Point(45, 91);
+			this.textBoxServerIP.Name = "textBoxServerIP";
+			this.textBoxServerIP.Size = new System.Drawing.Size(104, 21);
+			this.textBoxServerIP.TabIndex = 16;
+			this.textBoxServerIP.Text = "129.9.191.100";
 			// 
 			// comboBoxTCP1
 			// 
 			this.comboBoxTCP1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxTCP1.FormattingEnabled = true;
 			this.comboBoxTCP1.Items.AddRange(new object[] {
-									"TCP",
-									"UDP"});
-			this.comboBoxTCP1.Location = new System.Drawing.Point(101, 56);
+									"TCP"});
+			this.comboBoxTCP1.Location = new System.Drawing.Point(100, 124);
 			this.comboBoxTCP1.Name = "comboBoxTCP1";
 			this.comboBoxTCP1.Size = new System.Drawing.Size(49, 20);
 			this.comboBoxTCP1.TabIndex = 15;
 			// 
 			// textBoxServerPort
 			// 
-			this.textBoxServerPort.Location = new System.Drawing.Point(46, 56);
+			this.textBoxServerPort.Location = new System.Drawing.Point(46, 124);
 			this.textBoxServerPort.MaxLength = 6;
 			this.textBoxServerPort.Name = "textBoxServerPort";
 			this.textBoxServerPort.Size = new System.Drawing.Size(45, 21);
 			this.textBoxServerPort.TabIndex = 14;
 			this.textBoxServerPort.Text = "65432";
 			// 
-			// comboBoxServerIP
-			// 
-			this.comboBoxServerIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBoxServerIP.FormattingEnabled = true;
-			this.comboBoxServerIP.Location = new System.Drawing.Point(46, 23);
-			this.comboBoxServerIP.Name = "comboBoxServerIP";
-			this.comboBoxServerIP.Size = new System.Drawing.Size(104, 20);
-			this.comboBoxServerIP.TabIndex = 13;
-			// 
 			// label7
 			// 
-			this.label7.Location = new System.Drawing.Point(8, 54);
+			this.label7.Location = new System.Drawing.Point(10, 122);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(37, 23);
 			this.label7.TabIndex = 8;
@@ -127,7 +179,7 @@ namespace vTCPServer.Forms
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(7, 20);
+			this.label1.Location = new System.Drawing.Point(10, 89);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(26, 23);
 			this.label1.TabIndex = 2;
@@ -136,13 +188,13 @@ namespace vTCPServer.Forms
 			// 
 			// buttonStartServer
 			// 
-			this.buttonStartServer.Location = new System.Drawing.Point(11, 94);
+			this.buttonStartServer.Location = new System.Drawing.Point(10, 194);
 			this.buttonStartServer.Name = "buttonStartServer";
 			this.buttonStartServer.Size = new System.Drawing.Size(139, 23);
 			this.buttonStartServer.TabIndex = 0;
 			this.buttonStartServer.Text = "Start";
 			this.buttonStartServer.UseVisualStyleBackColor = true;
-			this.buttonStartServer.Click += new System.EventHandler(this.Button1Click);
+			this.buttonStartServer.Click += new System.EventHandler(this.ButtonStartServerClick);
 			// 
 			// textBoxLogdata
 			// 
@@ -220,24 +272,12 @@ namespace vTCPServer.Forms
 			// 
 			this.groupBox2.Controls.Add(this.checkBoxLoopBack);
 			this.groupBox2.Controls.Add(this.checkBoxEnableRule);
-			this.groupBox2.Location = new System.Drawing.Point(13, 301);
+			this.groupBox2.Location = new System.Drawing.Point(13, 384);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(161, 167);
+			this.groupBox2.Size = new System.Drawing.Size(161, 84);
 			this.groupBox2.TabIndex = 9;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Rule Config";
-			// 
-			// checkBoxAutoClear
-			// 
-			this.checkBoxAutoClear.Checked = true;
-			this.checkBoxAutoClear.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxAutoClear.Location = new System.Drawing.Point(540, 14);
-			this.checkBoxAutoClear.Name = "checkBoxAutoClear";
-			this.checkBoxAutoClear.Size = new System.Drawing.Size(83, 24);
-			this.checkBoxAutoClear.TabIndex = 4;
-			this.checkBoxAutoClear.Text = "AutoClear";
-			this.checkBoxAutoClear.UseVisualStyleBackColor = true;
-			this.checkBoxAutoClear.CheckedChanged += new System.EventHandler(this.CheckBoxAutoClearCheckedChanged);
 			// 
 			// checkBoxLoopBack
 			// 
@@ -258,6 +298,18 @@ namespace vTCPServer.Forms
 			this.checkBoxEnableRule.Text = "Enable reply rules";
 			this.checkBoxEnableRule.UseVisualStyleBackColor = true;
 			this.checkBoxEnableRule.CheckedChanged += new System.EventHandler(this.CheckBoxEnableRuleCheckedChanged);
+			// 
+			// checkBoxAutoClear
+			// 
+			this.checkBoxAutoClear.Checked = true;
+			this.checkBoxAutoClear.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxAutoClear.Location = new System.Drawing.Point(540, 14);
+			this.checkBoxAutoClear.Name = "checkBoxAutoClear";
+			this.checkBoxAutoClear.Size = new System.Drawing.Size(83, 24);
+			this.checkBoxAutoClear.TabIndex = 4;
+			this.checkBoxAutoClear.Text = "AutoClear";
+			this.checkBoxAutoClear.UseVisualStyleBackColor = true;
+			this.checkBoxAutoClear.CheckedChanged += new System.EventHandler(this.CheckBoxAutoClearCheckedChanged);
 			// 
 			// checkBoxShowdata
 			// 
@@ -291,15 +343,14 @@ namespace vTCPServer.Forms
 			this.checkBoxSendHex.UseVisualStyleBackColor = true;
 			this.checkBoxSendHex.CheckedChanged += new System.EventHandler(this.CheckBoxSendHexCheckedChanged);
 			// 
-			// button2
+			// buttonSend
 			// 
-			this.button2.Location = new System.Drawing.Point(640, 394);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(68, 74);
-			this.button2.TabIndex = 0;
-			this.button2.Text = "Send";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.Button2Click);
+			this.buttonSend.Location = new System.Drawing.Point(640, 394);
+			this.buttonSend.Name = "buttonSend";
+			this.buttonSend.Size = new System.Drawing.Size(68, 74);
+			this.buttonSend.TabIndex = 0;
+			this.buttonSend.Text = "Server  Send";
+			this.buttonSend.UseVisualStyleBackColor = true;
 			// 
 			// buttonClear
 			// 
@@ -319,9 +370,9 @@ namespace vTCPServer.Forms
 			this.groupBox3.Controls.Add(this.label4);
 			this.groupBox3.Controls.Add(this.textBoxClentIP);
 			this.groupBox3.Controls.Add(this.label2);
-			this.groupBox3.Location = new System.Drawing.Point(12, 160);
+			this.groupBox3.Location = new System.Drawing.Point(12, 260);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(161, 126);
+			this.groupBox3.Size = new System.Drawing.Size(161, 118);
 			this.groupBox3.TabIndex = 11;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Client Config";
@@ -331,8 +382,7 @@ namespace vTCPServer.Forms
 			this.comboBoxTCP2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBoxTCP2.FormattingEnabled = true;
 			this.comboBoxTCP2.Items.AddRange(new object[] {
-									"TCP",
-									"UDP"});
+									"TCP"});
 			this.comboBoxTCP2.Location = new System.Drawing.Point(101, 55);
 			this.comboBoxTCP2.Name = "comboBoxTCP2";
 			this.comboBoxTCP2.Size = new System.Drawing.Size(49, 20);
@@ -396,7 +446,7 @@ namespace vTCPServer.Forms
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.checkBoxShowHex);
 			this.Controls.Add(this.textBoxInterval);
-			this.Controls.Add(this.button2);
+			this.Controls.Add(this.buttonSend);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.cBAutoSend);
 			this.Controls.Add(this.label8);
@@ -416,6 +466,12 @@ namespace vTCPServer.Forms
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ComboBox comboBoxDevices;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.TextBox textBoxMac;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.TextBox textBoxTimeout;
+		private System.Windows.Forms.TextBox textBoxServerIP;
 		private System.Windows.Forms.ComboBox comboBoxTCP2;
 		private System.Windows.Forms.ComboBox comboBoxTCP1;
 		private System.Windows.Forms.TextBox textBoxClentIP;
@@ -428,12 +484,11 @@ namespace vTCPServer.Forms
 		private System.Windows.Forms.CheckBox checkBoxLoopBack;
 		private System.Windows.Forms.CheckBox checkBoxEnableRule;
 		private System.Windows.Forms.Button buttonClear;
-		private System.Windows.Forms.ComboBox comboBoxServerIP;
 		private System.Windows.Forms.TextBox textBoxServerPort;
 		private System.Windows.Forms.CheckBox checkBoxShowdata;
 		private System.Windows.Forms.CheckBox checkBoxShowHex;
 		private System.Windows.Forms.CheckBox checkBoxSendHex;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button buttonSend;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.TextBox textBoxInterval;

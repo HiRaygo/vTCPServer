@@ -134,7 +134,7 @@ namespace vTCPServer.Common
 
         }
 
-        public static Packet BuildTcpPacket(EndPointInfo endPointInfo, TcpControlBits tcpControlBits, List<TcpOption> tcpOptionList = null, bool withPayload = false, string payloadData = "")
+        public static Packet BuildTcpPacket(EndPointInfo endPointInfo, TcpControlBits tcpControlBits, List<TcpOption> tcpOptionList = null, bool withPayload = false, byte[] payloadData = null)
         {
             EthernetLayer ethernetLayer =
                 new EthernetLayer
@@ -178,7 +178,7 @@ namespace vTCPServer.Common
             {
                 PayloadLayer payloadLayer = new PayloadLayer
                 {
-                    Data = new Datagram(System.Text.Encoding.ASCII.GetBytes(payloadData)),
+                    Data = new Datagram(payloadData),
                 };
 
                 builder = new PacketBuilder(ethernetLayer, ipV4Layer, tcpLayer, payloadLayer);
