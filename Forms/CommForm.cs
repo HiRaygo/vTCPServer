@@ -27,7 +27,6 @@ namespace vTCPServer.Forms
 	/// </summary>
 	public partial class CommForm : Form
 	{
-		bool isShowHex;
 		bool isSendHex;
 		bool isLogData;
 		bool isEnableRule;
@@ -61,7 +60,6 @@ namespace vTCPServer.Forms
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-			isShowHex = false;
 			isSendHex = false;
 			isLogData = true;
 			isEnableRule = false;
@@ -191,10 +189,25 @@ namespace vTCPServer.Forms
 					                        LogData(rstring, 2);
 					                        if(isLoopBack)
 					                        {
-					                        	byte[] rbytes = Encoding.Default.GetBytes(rstring);
+					                        	byte[] rbytes = HexString.HexString2Bytes(rstring);
 					                        	Packet rsp = TCPUtils.BuildTcpPacket(endPointInfo, TcpControlBits.Push|TcpControlBits.Acknowledgment, null, true, rbytes);
 					                        	LogData(rstring, 1);
 					                        }
+					                        else if(isEnableRule)
+											{
+					                        	byte[] rbytes = HexString.HexString2Bytes(rstring);
+												byte[][] rspdata;
+												MatchedInfo minfo;
+												if(RuleHelper.GetMatchedMesage(rbytes, out rspdata, out minfo))
+												{
+													for(int i=0; i<minfo.NofMsg; i++)
+													{
+														System.Threading.Thread.Sleep(minfo.Delays[i]);
+														communicator.SendPacket(TCPUtils.BuildTcpPacket(endPointInfo, TcpControlBits.Push|TcpControlBits.Acknowledgment, null, true, rspdata[i]));
+														LogData(HexString.Bytes2HexString(rspdata[i]), 1);
+													}
+												}
+											}
 					                    }
 	                        			break;
 					                case TcpControlBits.Synchronize:
@@ -306,11 +319,6 @@ namespace vTCPServer.Forms
 			this.textBoxLogdata.Clear();
 		}
 		
-		void CheckBoxShowHexCheckedChanged(object sender, EventArgs e)
-		{
-			isShowHex = checkBoxShowHex.Checked;			
-		}
-		
 		void CheckBoxShowdataCheckedChanged(object sender, EventArgs e)
 		{
 			isLogData = checkBoxShowdata.Checked;
@@ -318,7 +326,19 @@ namespace vTCPServer.Forms
 		
 		void CheckBoxSendHexCheckedChanged(object sender, EventArgs e)
 		{
-			isSendHex = checkBoxSendHex.Checked;			
+			isSendHex = checkBoxSendHex.Checked;
+			string rstring = textBoxSend.Text;
+			if(string.IsNullOrEmpty(rstring))
+				return;
+			try{
+				if(isSendHex)
+					textBoxSend.Text = HexString.Bytes2HexString(HexString.AsciiString2Bytes(rstring));				
+				else
+					textBoxSend.Text = HexString.Bytes2AsciiString(HexString.HexString2Bytes(rstring));
+			}
+			catch(Exception ex){
+				MessageBox.Show(ex.Message);
+			}
 		}
 		
 		void CBAutoSendCheckedChanged(object sender, EventArgs e)
@@ -333,25 +353,6 @@ namespace vTCPServer.Forms
 			{
 				checkBoxLoopBack.Checked = false;
 			}
-		}
-		
-		
-		void ButtonLoadRulesClick(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = "XML Document(*.xml)|*.xml";
-			ofd.Multiselect = false;
-			ofd.ValidateNames = true;
-			if(ofd.ShowDialog() == DialogResult.OK)
-            {
-				try{
-					RuleHelper.ImportRulesFromXml(ofd.FileName);
-				}
-				catch(Exception ex)
-				{
-					MessageBox.Show(ex.Message);
-				}
-            }
 		}
 		
 		void CheckBoxLoopBackCheckedChanged(object sender, EventArgs e)

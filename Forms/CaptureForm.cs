@@ -203,7 +203,6 @@ namespace vTCPServer.Forms
                     }
                 } while (true);
             }
-            isCapturing = false;
 		}
 		
 		
