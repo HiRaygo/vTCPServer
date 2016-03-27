@@ -77,8 +77,7 @@ namespace vTCPServer.Forms
 			this.listView1.Location = new System.Drawing.Point(12, 36);
 			this.listView1.MultiSelect = false;
 			this.listView1.Name = "listView1";
-			this.listView1.Scrollable = false;
-			this.listView1.Size = new System.Drawing.Size(183, 432);
+			this.listView1.Size = new System.Drawing.Size(183, 421);
 			this.listView1.TabIndex = 0;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;

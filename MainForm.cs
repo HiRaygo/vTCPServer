@@ -21,6 +21,7 @@ namespace vTCPServer
 		RuleForm rForm;
 		CommForm sForm;
 		CaptureForm cForm;
+		HelpForm hForm;
 		int formtype;
 		
 		public MainForm()
@@ -112,5 +113,19 @@ namespace vTCPServer
 			}
 		}
 		
+		
+		void HelpToolStripButtonClick(object sender, EventArgs e)
+		{
+			if(formtype != 4)
+			{
+				if(hForm ==null)
+					hForm = new HelpForm();
+				SwitchForm(hForm);
+				formtype = 4;
+				toolStripBtnRule.Checked = false;
+				toolStripBtnSocket.Checked = false;
+				toolStripBtnCapture.Checked = false;
+			}
+		}
 	}
 }

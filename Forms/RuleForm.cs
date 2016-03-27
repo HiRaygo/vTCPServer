@@ -52,7 +52,7 @@ namespace vTCPServer.Forms
 			
 			ColumnHeader  ch= new ColumnHeader(); 
 			ch.Text = "Rule List";   //header title			 
-			ch.Width = 180;    		//header width			 
+			ch.Width = 175;    		//header width			 
 			ch.TextAlign = HorizontalAlignment.Left;		 
 			this.listView1.Columns.Add(ch);
 			
@@ -184,6 +184,26 @@ namespace vTCPServer.Forms
 		
 		void ToolStripButtonSaveClick(object sender, EventArgs e)
 		{
+			ListViewItem item = listView1.SelectedItems[0];
+			if(item != null)
+			{
+				int index = item.Index;
+				//Update rulelist
+				RuleMsg rule = new RuleMsg();
+				rule.name = textBoxName.Text;
+				rule.isAddCRC16 = checkBoxAddCRC.Checked;
+				rule.isEnable = checkBoxEnable.Checked;
+				rule.isHex = checkBoxHEX.Checked;
+				rule.isMatchOnce = checkBoxMatchOnce.Checked;
+				rule.isMatchPart = checkBoxMatchPart.Checked;
+				rule.isContinueNext = checkBoxContinueNext.Checked;
+				rule.rString = textBoxRecvData.Text;
+				rule.mString = textBoxRespData.Text;
+				int.TryParse(textBoxDelay.Text, out rule.iDelay);
+				rulelist[index] = rule;
+				this.listView1.Items[index].Text = textBoxName.Text;
+			}
+			
 			RuleHelper.SetRules(rulelist);
 		}
 		

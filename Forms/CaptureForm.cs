@@ -8,15 +8,16 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-using vTCPServer.Common;
 using PcapDotNet.Core;
 using PcapDotNet.Packets;
+using vTCPServer.Common;
 
 namespace vTCPServer.Forms
 {
@@ -25,7 +26,6 @@ namespace vTCPServer.Forms
 	/// </summary>
 	public partial class CaptureForm : Form
 	{
-		bool isShowHex;
 		bool isLogData;
 		bool isIPSelect;
 		bool isPortSelect;
@@ -51,7 +51,6 @@ namespace vTCPServer.Forms
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-			isShowHex = true;
 			isLogData = true;
 			isIPSelect = false;
 			isPortSelect = false;
@@ -128,11 +127,7 @@ namespace vTCPServer.Forms
 			iii = 0;
 		}
 		
-		void CheckBoxShowHexCheckedChanged(object sender, EventArgs e)
-		{
-			isShowHex = checkBoxShowHex.Checked;			
-		}
-		
+	
 		void CheckBoxShowdataCheckedChanged(object sender, EventArgs e)
 		{
 			isLogData = checkBoxShowdata.Checked;
@@ -214,6 +209,39 @@ namespace vTCPServer.Forms
 		void CheckBoxPortCheckedChanged(object sender, EventArgs e)
 		{
 			isPortSelect =checkBoxPort.Checked;
+		}
+		
+		void ButtonSaveClick(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Filter = "txt Document(*.txt)|*.txt";
+			sfd.ValidateNames = true;
+			if(sfd.ShowDialog() == DialogResult.OK)
+            {
+				string filename = sfd.FileName;
+				try{
+					using(FileStream fs = File.Open(filename, FileMode.Create))
+					{
+						using (StreamWriter sw = new StreamWriter(fs, Encoding.Default))
+						{
+							foreach (ListViewItem lvi in listView1.Items)
+							{
+								//if(lvi.SubItems[4].Text == "0")
+								//	continue;
+								sw.WriteLine(lvi.Text + "\t" + lvi.SubItems[1].Text+ "\t" + lvi.SubItems[2].Text+ "\t" + lvi.SubItems[3].Text+ "\t" + lvi.SubItems[4].Text+ "\t" + lvi.SubItems[5].Text);
+							}
+						}
+					}
+					if (System.IO.File.Exists(filename))
+					{
+						System.Diagnostics.Process.Start(filename);
+					}
+				}
+				catch(Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+            }
 		}
 	}
 }

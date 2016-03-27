@@ -73,6 +73,10 @@
     <Compile Include="Common\CRC.cs" />
     <Compile Include="Common\HexString.cs" />
     <Compile Include="Common\RuleHelper.cs" />
+    <Compile Include="Forms\HelpForm.cs" />
+    <Compile Include="Forms\HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RuleForm.cs" />
     <Compile Include="Forms\RuleForm.Designer.cs">
       <DependentUpon>RuleForm.cs</DependentUpon>
@@ -87,6 +91,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Resource\Add.png" />
+    <None Include="Resource\capture.png" />
     <None Include="Resource\Delete.png" />
     <None Include="Resource\Down.png" />
     <None Include="Resource\dribbble.png" />
@@ -110,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CommForm.resx">
       <DependentUpon>CommForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RuleForm.resx">
       <DependentUpon>RuleForm.cs</DependentUpon>

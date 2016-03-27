@@ -3,7 +3,7 @@
  * User: XiaoSanYa
  * Date: 2016/1/24
  * Time: 12:05
- * 
+ *
  */
 using System;
 using System.Collections.Generic;
@@ -41,7 +41,7 @@ namespace vTCPServer.Forms
 		string filterstr;
 		string sMac;
 		string sIp;
-		string sPort;		
+		string sPort;
 		IList<LivePacketDevice> allDevices;
         PacketDevice selectedDevice;
         Thread serverthread;
@@ -97,6 +97,8 @@ namespace vTCPServer.Forms
             
             if(comboBoxDevices.Items.Count>0)
             	comboBoxDevices.SelectedIndex =0;
+            
+            comboBoxTCP2.SelectedIndex = 0;
 		}
 		
 	
@@ -168,7 +170,7 @@ namespace vTCPServer.Forms
                 running = true;
 	            do
 	            {
-	                PacketCommunicatorReceiveResult result = communicator.ReceivePacket(out packet);	
+	                PacketCommunicatorReceiveResult result = communicator.ReceivePacket(out packet);
 	                switch (result)
 	                {
 	                    case PacketCommunicatorReceiveResult.Timeout:
@@ -288,7 +290,7 @@ namespace vTCPServer.Forms
 				return;
 			
 			if(textBoxLogdata.InvokeRequired)
-			{				
+			{
 				this.Invoke(ld, new object[]{str, type});
 			}
 			else
@@ -301,7 +303,7 @@ namespace vTCPServer.Forms
 					{
 						iii = 0;
 						if(textBoxLogdata.TextLength > 10000)
-							textBoxLogdata.Clear();						
+							textBoxLogdata.Clear();
 					}
 				}
 				//Log data
@@ -311,7 +313,7 @@ namespace vTCPServer.Forms
 					textBoxLogdata.AppendText("Recv: "+ str + "\n");
 				else
 					textBoxLogdata.AppendText("Info: "+ str + "\n");
-			}			
+			}
 		}
 		
 		void ButtonClearClick(object sender, EventArgs e)
@@ -332,7 +334,7 @@ namespace vTCPServer.Forms
 				return;
 			try{
 				if(isSendHex)
-					textBoxSend.Text = HexString.Bytes2HexString(HexString.AsciiString2Bytes(rstring));				
+					textBoxSend.Text = HexString.Bytes2HexString(HexString.AsciiString2Bytes(rstring));
 				else
 					textBoxSend.Text = HexString.Bytes2AsciiString(HexString.HexString2Bytes(rstring));
 			}
@@ -343,7 +345,7 @@ namespace vTCPServer.Forms
 		
 		void CBAutoSendCheckedChanged(object sender, EventArgs e)
 		{
-			isAutoSend = cBAutoSend.Checked;			
+			isAutoSend = cBAutoSend.Checked;
 		}
 		
 		void CheckBoxEnableRuleCheckedChanged(object sender, EventArgs e)

@@ -38,12 +38,12 @@ namespace vTCPServer.Forms
 			this.textBoxPort = new System.Windows.Forms.TextBox();
 			this.buttonStartCapture = new System.Windows.Forms.Button();
 			this.checkBoxShowdata = new System.Windows.Forms.CheckBox();
-			this.checkBoxShowHex = new System.Windows.Forms.CheckBox();
 			this.buttonClear = new System.Windows.Forms.Button();
 			this.checkBoxIP = new System.Windows.Forms.CheckBox();
 			this.textBoxIP = new System.Windows.Forms.TextBox();
 			this.checkBoxPort = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.buttonSave = new System.Windows.Forms.Button();
 			this.comboBoxDevices = new System.Windows.Forms.ComboBox();
 			this.listView1 = new System.Windows.Forms.ListView();
 			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
@@ -78,25 +78,13 @@ namespace vTCPServer.Forms
 			// 
 			this.checkBoxShowdata.Checked = true;
 			this.checkBoxShowdata.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxShowdata.Location = new System.Drawing.Point(505, 42);
+			this.checkBoxShowdata.Location = new System.Drawing.Point(483, 42);
 			this.checkBoxShowdata.Name = "checkBoxShowdata";
 			this.checkBoxShowdata.Size = new System.Drawing.Size(49, 24);
 			this.checkBoxShowdata.TabIndex = 3;
 			this.checkBoxShowdata.Text = "Log";
 			this.checkBoxShowdata.UseVisualStyleBackColor = true;
 			this.checkBoxShowdata.CheckedChanged += new System.EventHandler(this.CheckBoxShowdataCheckedChanged);
-			// 
-			// checkBoxShowHex
-			// 
-			this.checkBoxShowHex.Checked = true;
-			this.checkBoxShowHex.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxShowHex.Location = new System.Drawing.Point(560, 42);
-			this.checkBoxShowHex.Name = "checkBoxShowHex";
-			this.checkBoxShowHex.Size = new System.Drawing.Size(49, 24);
-			this.checkBoxShowHex.TabIndex = 2;
-			this.checkBoxShowHex.Text = "Hex";
-			this.checkBoxShowHex.UseVisualStyleBackColor = true;
-			this.checkBoxShowHex.CheckedChanged += new System.EventHandler(this.CheckBoxShowHexCheckedChanged);
 			// 
 			// buttonClear
 			// 
@@ -138,11 +126,11 @@ namespace vTCPServer.Forms
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.buttonSave);
 			this.groupBox1.Controls.Add(this.comboBoxDevices);
 			this.groupBox1.Controls.Add(this.buttonClear);
 			this.groupBox1.Controls.Add(this.checkBoxShowdata);
 			this.groupBox1.Controls.Add(this.textBoxIP);
-			this.groupBox1.Controls.Add(this.checkBoxShowHex);
 			this.groupBox1.Controls.Add(this.checkBoxPort);
 			this.groupBox1.Controls.Add(this.checkBoxIP);
 			this.groupBox1.Controls.Add(this.buttonStartCapture);
@@ -152,6 +140,16 @@ namespace vTCPServer.Forms
 			this.groupBox1.Size = new System.Drawing.Size(696, 74);
 			this.groupBox1.TabIndex = 18;
 			this.groupBox1.TabStop = false;
+			// 
+			// buttonSave
+			// 
+			this.buttonSave.Location = new System.Drawing.Point(538, 42);
+			this.buttonSave.Name = "buttonSave";
+			this.buttonSave.Size = new System.Drawing.Size(69, 23);
+			this.buttonSave.TabIndex = 19;
+			this.buttonSave.Text = "Save";
+			this.buttonSave.UseVisualStyleBackColor = true;
+			this.buttonSave.Click += new System.EventHandler(this.ButtonSaveClick);
 			// 
 			// comboBoxDevices
 			// 
@@ -228,6 +226,7 @@ namespace vTCPServer.Forms
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.Button buttonSave;
 		private System.Windows.Forms.ColumnHeader columnHeader6;
 		private System.Windows.Forms.ColumnHeader columnHeader5;
 		private System.Windows.Forms.ColumnHeader columnHeader4;
@@ -243,7 +242,6 @@ namespace vTCPServer.Forms
 		private System.Windows.Forms.Button buttonClear;
 		private System.Windows.Forms.TextBox textBoxPort;
 		private System.Windows.Forms.CheckBox checkBoxShowdata;
-		private System.Windows.Forms.CheckBox checkBoxShowHex;
 		private System.Windows.Forms.Button buttonStartCapture;
 		
 	}
