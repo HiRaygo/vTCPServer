@@ -184,10 +184,10 @@ namespace vTCPServer.Forms
 		
 		void ToolStripButtonSaveClick(object sender, EventArgs e)
 		{
-			ListViewItem item = listView1.SelectedItems[0];
-			if(item != null)
+			var items = listView1.SelectedItems;
+			if(items.Count >0)
 			{
-				int index = item.Index;
+				int index = items[0].Index;
 				//Update rulelist
 				RuleMsg rule = new RuleMsg();
 				rule.name = textBoxName.Text;
